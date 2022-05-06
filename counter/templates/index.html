@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Counter</title>
+    {% if session ['mode'] == 'dark'%}
+    <style> 
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    {% endif %}
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="m-5 text-light bg-primary col-5 p-3 justify-content-center mx-auto row">Counter</h1>
+        <h2 class="mb-5">{{session['views']}} view(s)</h2> 
+        <a href="/add_two" class="btn btn-secondary btn-lg col-md-3">Add 2 visits</a>
+        <a href="/destroy_session" class="btn btn-danger btn-lg col-md-3">Reset</a>
+        <form action="/increase_views_by" method="post">
+            <label for="input-id" class="col-sm-2 mt-5">Increase Count By:</label>
+            <input class="input-group-lg border-3 " type="number" name="views" id="">
+            <button type="submit" value="increase_views_by" class="btn btn-success mx-md-3 link">Submit</button>
+        </form>
+        <a href="{{ url_for('set_background', mode='light') }}">Light Mode</a>
+        <a href="{{ url_for('set_background', mode='dark') }}">Dark Mode</a>
+    </div>
+</body>
+</html>
