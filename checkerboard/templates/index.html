@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Checkerboard</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+        <style>
+            .color0{
+                background-color: {{col1}};
+            }
+            .color1{
+                background-color: {{col2}};
+            }
+        </style>
+    </head>
+    <body>
+
+        <table>
+            {% for i in range(down)%}
+                <tr .flex>
+                    {% for j in range(across)%}
+                    <td class="color{{ (i+j)%2 }}"></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
